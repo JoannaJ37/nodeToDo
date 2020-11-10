@@ -73,7 +73,7 @@ function mainController($scope, $http) {
   // update a todo after checking it
   $scope.updateTodo = function(id) {
 
-    console.log("updating 1...")
+    console.log("Updating ToDo list...")
     $http
     .post("/api/todos/update/" + id)
     .success(function(data) {

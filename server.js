@@ -13,7 +13,7 @@ var port = 4000;
 
 // configuration ===============================================================
 
-mongoose.connect("mongodb://ja:dupadupa12@ds119072.mlab.com:19072/lol", {
+mongoose.connect("mongodb://127.0.0.1:27017/todo", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }); // connect to mongoDB database on modulus.io
@@ -112,14 +112,14 @@ app.post("/api/todos", function(req, res) {
 
 // update todo
 app.post("/api/todos/update/:todo_id", function(req, res) {
-  console.log("updating 2 ...")
+  console.log("Updating...")
 
   Todo.findById(req.params.todo_id, (err, newtodo) => {
     if (err) return handleError(err);
     newtodo.done = !newtodo.done;
     newtodo.save((err, updatedCat) => {
       Todo.find(function(err, todos) {
-        console.log("elo")
+        console.log("Updated.")
         if (err) res.send(err);
         res.json(todos);
       });
